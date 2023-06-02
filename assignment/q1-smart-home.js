@@ -3,26 +3,42 @@
     - Create a "BaseSignal" class to be inherited by "TvSignal", "AirconSignal" and "DoorSignal" class.
     - In the "BaseSignal" class, throw an error within the constructor to block direct instantiation (see doc-permissions.js for example).
     - Implement `send` method to print `Sending ${type} signal` in the BaseSignal class.
-    - In the respective child classes, call `super()` with it's type.
+    - In the respective child classes, call `super()` with its type.
 */
 
 // Task: Add code here
+class BaseSignal {
+    constructor(type){
+        if(this.constructor.name === "BaseSignal"){
+            throw new Error("This class cannot be instantiated");
+        }
+        this.type = type;
+    }
+   send() {
+        let type = this.type;
+        console.log(`Sending ${type} signal`);
+   }
+}
+
 
 class TvSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("tv");
     }
 }
 
 class AirconSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("aircon");
     }
 }
 
 class DoorSignal extends BaseSignal {
     constructor(){
         // Add code here
+        super("door");
     }
 }
 

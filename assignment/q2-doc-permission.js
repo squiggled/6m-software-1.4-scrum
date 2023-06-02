@@ -73,3 +73,29 @@ class Permission{
 }
 
 // Add code here
+
+class Document extends Permission {
+    constructor (role, operation, content){
+        super(role, operation, content);
+        this.role=role;
+        this.operation=operation;
+        this.content=content;
+    }
+    process(){
+        console.log(this.check());
+    }
+}
+// // Scenario 1:
+// const d = new Document("EDITOR", "UPDATE", "Hello content");
+// console.log(d);
+// d.process();
+
+//Scenario 2:
+const d = new Document("READER", "UPDATE", "Hello content");
+console.log(d);
+d.process();
+
+// //Scenario 3:
+// const d = new Document("OWNER", "DELETE", "Hello content");
+// console.log(d);
+// d.process();
